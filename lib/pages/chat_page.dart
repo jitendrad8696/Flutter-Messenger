@@ -8,7 +8,8 @@ import 'package:messenger/widgets/text_field.dart';
 
 class ChatPage extends StatefulWidget {
   final String name, pic, email, uid;
-  ChatPage({this.uid, this.email, this.pic, this.name});
+  final bool chatOrNot;
+  ChatPage({this.uid, this.email, this.pic, this.name, this.chatOrNot});
   @override
   _ChatPageState createState() => _ChatPageState();
 }
@@ -18,9 +19,14 @@ class _ChatPageState extends State<ChatPage> {
   final FocusNode focusNode = FocusNode();
   Stream messagesStream;
   String chat;
-  bool chatRoomOrNot = false;
+  bool chatOrNot;
+
+  chatExistOrNot() {
+    return widget.chatOrNot;
+  }
 
   doThis() async {
+    chatOrNot = chatExistOrNot();
     setState(() {});
     messagesStream =
         await DataBase().getChats(uid: Auth.uid, gmail: widget.email);
@@ -39,7 +45,7 @@ class _ChatPageState extends State<ChatPage> {
         chat = controller.text;
       });
 
-      if (chatRoomOrNot == false) {
+      if (chatOrNot == false) {
         Map<String, dynamic> myMap = {
           'name': widget.name,
           'email': widget.email,
@@ -64,7 +70,7 @@ class _ChatPageState extends State<ChatPage> {
         'email': Auth.email,
       };
       setState(() {
-        chatRoomOrNot = true;
+        chatOrNot = true;
       });
       controller.clear();
 

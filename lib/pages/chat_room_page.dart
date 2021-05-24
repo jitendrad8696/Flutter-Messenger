@@ -46,6 +46,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                     email: ds['email'],
                     pic: ds['pic'],
                     uid: ds['uid'],
+                    chatOrNot: false,
                   );
                 },
               )
@@ -69,6 +70,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                     email: ds['email'],
                     pic: ds['pic'],
                     uid: ds['uid'],
+                    chatOrNot: true,
                   );
                 },
               )

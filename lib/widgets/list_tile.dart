@@ -3,7 +3,8 @@ import 'package:messenger/pages/chat_page.dart';
 
 class UserListTile extends StatelessWidget {
   final String name, pic, email, uid;
-  UserListTile({this.name, this.pic, this.email, this.uid});
+  final bool chatOrNot;
+  UserListTile({this.name, this.pic, this.email, this.uid, this.chatOrNot});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,6 +31,7 @@ class UserListTile extends StatelessWidget {
                   email: email,
                   uid: uid,
                   pic: pic,
+                  chatOrNot: chatOrNot,
                 ),
               ),
             );
